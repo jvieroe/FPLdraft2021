@@ -5,11 +5,8 @@ rm(list=ls())
 
 library(tidyverse)
 library(magrittr)
-library(ggplot2)
 library(rio)
-library(hrbrthemes)
-library(Manu)
-library(gganimate)
+library(openxlsx)
 
 '%!in%' <- function(x,y)!('%in%'(x,y))
 Sys.setenv(LANG = "en")
@@ -25,6 +22,9 @@ setwd("/Users/jeppeviero/Dropbox/02 Fantasy PL/FPLdraft2021")
 # ---------------------------------------------------------
 draft <- rio::import("data/2021_FPLdraft.xlsx")
 
+# ---------------------------------------------------------
+# Prep data
+# ---------------------------------------------------------
 draft <- draft %>%
   mutate(sequence = rep(seq(1, 3, 1),
                         90)) %>% 
@@ -51,4 +51,17 @@ draft <- draft %>%
   group_by(drafter) %>% 
   mutate(drafter_pickno = row_number()) %>% 
   ungroup()
+
+# ---------------------------------------------------------
+# Export data
+# ---------------------------------------------------------
+# ----- R
+save(draft,
+     file = "data/fpl_2021.Rdata")
+
+# ----- Excel
+write.xlsx(draft,
+           file = "data/fpl_2021.xlsx")
+
+
 
