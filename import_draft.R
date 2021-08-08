@@ -18,7 +18,7 @@ substrRight <- function(x, n){
   substr(x, nchar(x)-n+1, nchar(x))
 }
 
-setwd("/Users/jeppeviero/Dropbox/02 Fantasy PL/2021-22")
+setwd("/Users/jeppeviero/Dropbox/02 Fantasy PL/FPLdraft2021")
 
 # ---------------------------------------------------------
 # Load data
