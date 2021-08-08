@@ -23,9 +23,9 @@ setwd("/Users/jeppeviero/Dropbox/02 Fantasy PL/FPLdraft2021")
 # ---------------------------------------------------------
 # Load data
 # ---------------------------------------------------------
-draft_raw <- rio::import("2021_FPLdraft.xlsx")
+draft <- rio::import("data/2021_FPLdraft.xlsx")
 
-draft <- draft_raw %>%
+draft <- draft %>%
   mutate(sequence = rep(seq(1, 3, 1),
                         90)) %>% 
   mutate(player = lag(col1, 1)) %>% 
