@@ -64,6 +64,23 @@ write.xlsx(draft,
            file = "data/fpl_2021.xlsx")
 
 
+
+draft <- draft %>% 
+  select(-c(drafter, drafter_pickno, pick_round))
+
+goalies <- draft %>% 
+  filter(position == "GKP")
+
+defenders <- draft %>% 
+  filter(position == "DEF")
+
+midfielders <- draft %>% 
+  filter(position == "MID")
+
+forwards <- draft %>% 
+  filter(position == "FWD")
+
+
 # q()
 
 
